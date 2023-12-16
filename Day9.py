@@ -1,5 +1,4 @@
-direction = input("Please choose 'decode' to encrypt the code or 'encode' to crypt the code")
-
+direction = input("Please choose 'decode' to encrypt the code or 'encode' to crypt the code").lower
 text = input("Please enter the message you wanna encrypt").lower()
 shift = int(input("please enter the shift number of your letters"))   
 
@@ -15,6 +14,7 @@ def encryption(plain_text, shift_amount):
         char = alphabet[(position + shift_amount) % 26]
         coded_message += char
     print(f"The encripted message is {coded_message}")
+encryption(plain_text = text, shift_amount = shift)
 
 
 #caepher decoded program
@@ -28,11 +28,9 @@ def decryption(cipher_text, shift):
         char = alphabet[(position - shift)%26]
         decoded_message += char
     print(f"The decodede message is {decoded_message}")
-
+decryption(cipher_text = text, shift_amount = shift)
 
 if direction == "encode":
     encryption(plain_text = text, shift_amount = shift)
 elif direction == "decode":
     decryption(cipher_text = text, shift_amount = shift)
-
-
