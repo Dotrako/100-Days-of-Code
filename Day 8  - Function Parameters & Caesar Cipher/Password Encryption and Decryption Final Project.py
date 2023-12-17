@@ -1,5 +1,5 @@
 import string 
-from Day 8 Art Module import logo
+from Art import logo
 print(logo)
 
 # Get user input for the type of operation ('encode' or 'decode')
