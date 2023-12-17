@@ -6,7 +6,7 @@ student_scores = {
   "Neville": 62,
 }
 # creating a student_grades empty dictionary
-student_grades = dict()
+student_grades = {}
 
 # iterating in each item of our student_scores to update our stu_grades
 for key, value in student_scores.items():
