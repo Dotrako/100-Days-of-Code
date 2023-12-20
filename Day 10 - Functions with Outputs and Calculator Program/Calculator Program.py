@@ -1,6 +1,4 @@
 # Calculator Program
-# n1 = float(input("Enter the first number"))
-# n2 = float(input("Enter the second number"))
 
 # Addition
 def addition(n1, n2):
@@ -18,13 +16,29 @@ def multiply(n1, n2):
 def division(n1,n2):
     return n1 / n2
 
-calculator = {"+": addition, 
+operations = {"+": addition, 
               "-": substract, 
               "*": multiply,
-              "/": division}
+              "/": division,
+}
 
-# for key in calculator:
-#     print(key)
+num1 = float(input("Enter the first number"))
+num2 = float(input("Enter the second number"))
 
+operation_symbol = input("Please pick an opperation symbol (+, -, * or /)")
+
+if operation_symbol == "+":
+        result = addition(num1,num2)
+elif operation_symbol == "-":
+        result = substract(num1, num2)
+elif operation_symbol == "*":
+        result = multiply(num1, num2)
+elif operation_symbol == "/":
+        result = division(num1, num2)
+else:
+    print("Please choose a right operator!")
+
+print(f"{num1} {operation_symbol} {num2} = {result}")
+    
 # for value in calculator.values():
 #     print(value)
