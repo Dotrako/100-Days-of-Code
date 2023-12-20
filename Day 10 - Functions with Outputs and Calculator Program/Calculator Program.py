@@ -23,22 +23,16 @@ operations = {"+": addition,
 }
 
 num1 = float(input("Enter the first number"))
+
+for symbol in operations:
+    print(symbol)
+operation_symbol = input("Please pick an opperation symbol (+, -, * or /)")
 num2 = float(input("Enter the second number"))
 
-operation_symbol = input("Please pick an opperation symbol (+, -, * or /)")
+calculation_function = operations[operation_symbol]
+answer = calculation_function(num1, num2)
 
-if operation_symbol == "+":
-        result = addition(num1,num2)
-elif operation_symbol == "-":
-        result = substract(num1, num2)
-elif operation_symbol == "*":
-        result = multiply(num1, num2)
-elif operation_symbol == "/":
-        result = division(num1, num2)
-else:
-    print("Please choose a right operator!")
-
-print(f"{num1} {operation_symbol} {num2} = {result}")
+print(f"{num1} {operation_symbol} {num2} = {answer}")
     
 # for value in calculator.values():
 #     print(value)
