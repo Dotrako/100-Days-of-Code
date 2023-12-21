@@ -7,7 +7,8 @@ n2 = 0
 deck = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
 def addition(num1, num2):
-    return num1 + num2
+    result = num1 + num2
+    return result
 
 choice1 = (input("Do you want to play a game of Blackjack? Type 'y' or 'n':"))
 
@@ -23,11 +24,5 @@ if choice1 == "y":
     choice2 = input("Please Enter your decision 'h' for Hit and 's' for Stand").lower()
     if choice2 == "h":
         user_deck.append(random.choice(deck))
-        
-
-
-    
 else:
     print("Thank you for visiting our game, see you next")
-
-
