@@ -1,28 +1,70 @@
-import random 
+import random
 from Art import logo
+
 print(logo)
 
-n1 = 0 
-n2 = 0
-deck = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+def calculate_total(cards):
+    """Calculate the total value of a list of cards."""
+    total = sum(cards)
+    return total
 
-def addition(num1, num2):
-    result = num1 + num2
-    return result
+def draw_card(deck):
+    """Draw a card from the deck."""
+    return random.choice(deck)
 
-choice1 = (input("Do you want to play a game of Blackjack? Type 'y' or 'n':"))
+while True:
+    user_hand = []
+    pc_hand = []
+    deck = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
-user_deck = list()
-computer_card = list()
+    # User's initial draw
+    user_hand.append(draw_card(deck))
+    user_hand.append(draw_card(deck))
+    print(f"Your initial hand: {user_hand}")
+    user_total = calculate_total(user_hand)
+    print(f"Your total: {user_total}")
 
-if choice1 == "y":
-    user_deck.append(random.choice(deck))
-    user_deck.append(random.choice(deck))
-    computer_card.append(random.choice(deck))
-    print(f"Your cards: {user_deck}, current score is {addition(user_deck[0], user_deck[1])}")
-    print(f"The Computer first card is {computer_card}")
-    choice2 = input("Please Enter your decision 'h' for Hit and 's' for Stand").lower()
-    if choice2 == "h":
-        user_deck.append(random.choice(deck))
-else:
-    print("Thank you for visiting our game, see you next")
+    # Dealer's initial draw
+    pc_hand.append(draw_card(deck))
+    print(f"Dealer's first card: {pc_hand[0]}")
+
+    # User's turn
+    while True:
+        action = input("Type 'H' to hit or 'S' to stand: ").lower()
+        if action == "h":
+            user_hand.append(draw_card(deck))
+            print(f"Your hand: {user_hand}")
+            user_total = calculate_total(user_hand)
+            print(f"Your total: {user_total}")
+            if user_total > 21:
+                print("Bust! You lose.")
+                break
+        elif action == "s":
+            break
+        else:
+            print("Invalid input. Try again.")
+
+    # Dealer's turn
+    pc_total = calculate_total(pc_hand)
+    while pc_total < 17:
+        pc_hand.append(draw_card(deck))
+        pc_total = calculate_total(pc_hand)
+
+    print(f"Dealer's hand: {pc_hand}")
+    print(f"Dealer's total: {pc_total}")
+
+    # Determine the winner
+    if user_total > 21:
+        print("You lose.")
+    elif pc_total > 21:
+        print("You win!")
+    elif user_total > pc_total:
+        print("You win!")
+    elif user_total < pc_total:
+        print("You lose.")
+    else:
+        print("It's a tie.")
+
+    play_again = input("Do you want to play again? (Y/N): ").lower()
+    if play_again != "y":
+        break
