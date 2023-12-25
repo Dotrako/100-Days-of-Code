@@ -1,48 +1,66 @@
 import random as rd
 from Art import logo
+
+# Display the game logo
 print(logo)
-# Allow the player to submit a guess for a number between 1 and 100.
 
-guess = int(input("Please Enter a number between 1 and 100!"))
-numbers_list = list()
-
-def game_setup(game):
-    for number in range(1,101):
-        numbers_list.append(number)
+# Function to set up the game with numbers from 1 to 100
+def game_setup():
+    numbers_list = list(range(1, 101))
     print(numbers_list)
-game_setup(game = guess)
+    return numbers_list
 
+# Player's initial guess
+guess = int(input("Please Enter a number between 1 and 100: "))
+
+# Set up the game with available numbers
+numbers_list = game_setup()
+
+# Randomly select a number for the NPC (Non-Player Character)
 npc_number = rd.choice(numbers_list)
-print(npc_number)
+print(f"The NPC's number is: {npc_number}")
 
-setup=[1,2,3]
-difficulty = int(input("Please put your difficulty lvl 1 for easy 2 for medium and 3 for hard"))
-number_of_guess = 0
+# Get user input for game difficulty
+difficulty = int(input("Please select your difficulty level (1 for easy, 2 for medium, 3 for hard): "))
 
+# Set up game difficulty based on user input
 def difficulty_setup(difficulty):
     global number_of_guess
     if difficulty == 1:
-        print("you have chosen the easy difficulty you have 10 attempts")
+        print("You have chosen easy difficulty. You have 10 attempts.")
         number_of_guess = 10
     elif difficulty == 2:
-        print("you have chosen the medium difficulty you have 5 attempts")
+        print("You have chosen medium difficulty. You have 5 attempts.")
         number_of_guess = 5
     elif difficulty == 3:
-        print("you have chosen the hard difficulty you have only 3 attempts")
+        print("You have chosen hard difficulty. You have only 3 attempts.")
         number_of_guess = 3
+
+# Call the function to set up the game difficulty
 difficulty_setup(difficulty)
 
+# Function to handle the end of the game
 def finish():
-    pass
-finish()
+    print("Game Over!")
+    # Add any additional end-of-game logic here
+
+# Function to handle game rules and player's guesses
 def guess_rules():
-    global difficulty
     global npc_number
-    zbi = False
-    while not zbi: 
-        for attempts in range(number_of_guess):
-            guess = int(input("Please Enter a number between 1 and 100!"))
-            if guess == npc_number:
-                print(f"Congrats {npc_number} is the right number")
-                finish()     
+    global number_of_guess
+    for attempts in range(number_of_guess):
+        guess = int(input("Please Enter a number between 1 and 100: "))
+        if guess == npc_number:
+            print(f"Congratulations! {npc_number} is the correct number.")
+            finish()
+            break
+        elif guess > npc_number:
+            print("Incorrect guess. Try again. Youre too High")
+        else:
+            print("Incorrect guess. Try again. Youre too Low")
+    else:
+        print(f"Sorry, you've run out of attempts. The correct number was {npc_number}.")
+        finish()
+
+# Start the game
 guess_rules()
