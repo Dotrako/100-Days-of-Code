@@ -3,36 +3,34 @@ import random as rd
 from Art import logo, vs
 from game_data import data
 
-# create a random variables to store the pseudo random cpu output fron our list data
 first_subject = rd.choice(data)
 second_subject = rd.choice(data)
 
-# input a var to start or close the game
-start = input("Press Y to play or N to leave the game").lower
+start = input("Press Y to play or N to leave the game: ").lower()
 
 def game_rules(subject_A, subject_B):
-    print(f"Choose A for {first_subject["name"]}")
-    print(f"Choose B for {second_subject["name"]}")
-game_rules(subject_A = first_subject , subject_B = second_subject)
+    print(f"Choose A for {subject_A['name']}")
+    print(f"Choose B for {subject_B['name']}")
 
-choice = input("Please enter your choice!").lower()
-
-def game_player_process(player_choice):
+def game_player_process(player_choice, subject_A, subject_B):
     if player_choice == "a":
-        player_choice = first_subject["follower_count"]
+        return first_subject["follower_count"]
     else:
-        player_choice = second_subject["follower_count"]
-game_player_process(player_choice = choice)
+        return second_subject["follower_count"]
 
-cpu = ""
-def game_cpu_process(cpu_choice):
-    if choice == first_subject["follower_count"]:
-        cpu_choice = player_choice = second_subject["follower_count"]
+def game_cpu_process(player_choice, subject_A, subject_B):
+    if player_choice == first_subject["follower_count"]:
+        return second_subject["follower_count"]
     else:
-        player_choice = first_subject["follower_count"]
-game_cpu_process(cpu_choice=cpu)    
+        return first_subject["follower_count"]
 
-if input =="y":
-    game_rules()
-    game_player_process()
-    game_cpu_process()
+if start == "y":
+    game_rules(first_subject, second_subject)
+    choice = input("Please enter your choice: ").lower()
+    choice1 = input("Please enter your choice: ").lower()
+    
+    player_result = game_player_process(choice, first_subject, second_subject)
+    print(f"Player choice result: {player_result}")
+    
+    cpu_result = game_cpu_process(choice1, first_subject, second_subject)
+    print(f"CPU choice result: {cpu_result}")
