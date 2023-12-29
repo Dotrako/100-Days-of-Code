@@ -33,8 +33,6 @@ def order_detail():
         return order_price
     else:
         print("please enter a valid coffee type")
-        new_order = input("Please enter a new order")
-        order_detail ()
 final_price = order_detail()
 
     # elif customer_choice == "l"
