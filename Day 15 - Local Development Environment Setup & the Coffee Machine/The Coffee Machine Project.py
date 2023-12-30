@@ -1,14 +1,15 @@
-# importing useful libraries and modules
+# Importing necessary modules and data from external Coffee_Data module
 from Coffee_Data import MENU, resources
 
-# inputing the customer's choice (Espresso, Latte, Cappucino)
-customer_choice = input("Please Enter your wanted coffe:\nE for Esspresso \nL for Latte \n C for Cappuccino").lower()
+# Get customer's choice for the coffee type wanted 
+customer_choice = input("Please Enter your wanted coffe:\nE for Esspresso \nL for Latte \nC for Cappuccino").lower()
 
-# empty wallet
+# empty wallet of customer
 final_wallet = 0
 
-# inputting the customer's money (Quarters, Dimes, Nickles, Pennies)
+# Function to collect money from the customer
 def money_collector():
+    """Collects money input from the customer and returns the total amount."""
     quarters_num = int(input("How many quartes do you have"))* 0.25 # quarter * 0.25 = quarter in dollar
     dimes_num = int(input("How many dimes do you have")) * 0.10
     nickles_num = int(input("How many nickels do you have")) * 0.05
@@ -18,10 +19,13 @@ def money_collector():
 final_wallet = money_collector()
 print(f"Your total of coins in $ is {round(final_wallet,2)}$")
 
-# the order choosen by the client price
+# Initialize variables for order details
 order_price = 0
 coffe = ""
+
+# Function to determine the order price based on the customer's choice
 def order_detail(order, order_choice):
+    """Determines the order details and returns the price."""
     if customer_choice == "e":
         order_choice = "espresso"
         order  = MENU["espresso"]["cost"]
@@ -38,10 +42,12 @@ def order_detail(order, order_choice):
         print("please enter a valid coffee type")
 final_price = order_detail(order = order_price, order_choice = coffe)
 
-# the total change 
+# the total of the change 
 result = final_wallet - final_price
 
+# Calculate the change and inform the customer
 def money_checker(coffe_type):
+    """Checks if the customer has sufficient funds and calculates the change."""
     global final_wallet
     global final_price
     print(coffe)
