@@ -2,6 +2,7 @@
 from Coffee_Data import MENU, resources
 
 # inputing the customer's choice (Espresso, Latte, Cappucino)
+customer_choice = input("Please Enter your wanted coffe:\nE for Esspresso \nL for Latte \n C for Cappuccino").lower()
 
 # empty wallet
 final_wallet = 0
@@ -14,34 +15,40 @@ def money_collector():
     pennies_num = int(input("How many pennies do you have")) * 0.001
     customer_wallet = quarters_num + dimes_num + nickles_num + pennies_num
     return customer_wallet
-
 final_wallet = money_collector()
-print(f"Your total of coins in $ is {final_wallet}$")
+print(f"Your total of coins in $ is {round(final_wallet,2)}$")
 
 # the order choosen by the client price
 order_price = 0
-def order_detail():
-    customer_choice = input("Please Enter your wanted coffe:\nE for Esspresso \nL for Latte \n C for Cappuccino").lower
+coffe = ""
+def order_detail(order, order_choice):
     if customer_choice == "e":
-        order_price  = MENU["espresso"]["cost"]
-        return order_price
+        order_choice = "espresso"
+        order  = MENU["espresso"]["cost"]
+        return order
     elif customer_choice == "l":
-        order_price  = MENU["latte"]["cost"]
-        return order_price
+        order_choice = "latte"
+        order  = MENU["latte"]["cost"]
+        return order
     elif customer_choice == "c":
-        order_price  = MENU["cappuccino"]["cost"]
-        return order_price
+        order_choice = "cappuccino"
+        order  = MENU["cappuccino"]["cost"]
+        return order
     else:
         print("please enter a valid coffee type")
-final_price = order_detail()
+final_price = order_detail(order = order_price, order_choice = coffe)
 
-    # elif customer_choice == "l"
+# the total change 
+result = final_wallet - final_price
 
-    # else:
-
-
-# # checking if the money is enough 
-# if final_wallet > order_price
-# # delivering th chosen type of coffee
-
-
+def money_checker(coffe_type):
+    global final_wallet
+    global final_price
+    print(coffe)
+    if final_wallet > final_price:
+        print(f"Here is your coffe {coffe} and your change {round(final_wallet - final_price,2)}")
+        return result
+    else:
+        print(f"You dont have enough money please insert mor coins, you need {round(final_price - final_wallet, 2)}$ ")
+        return final_wallet
+money_checker(coffe)
