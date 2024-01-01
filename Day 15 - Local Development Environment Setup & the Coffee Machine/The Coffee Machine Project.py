@@ -1,60 +1,55 @@
-# Importing necessary modules and data from external Coffee_Data module
+#import modules and libraries
 from Coffee_Data import MENU, resources
 
-# Get customer's choice for the coffee type wanted 
-customer_choice = input("Please Enter your wanted coffe:\nE for Esspresso \nL for Latte \nC for Cappuccino").lower()
 
-# empty wallet of customer
-final_wallet = 0
+def is_ressource_sufficient(order_ingrdients):
+    """Returns True when order can be made, False if ingredients are insufficient"""
+    is_enough = True
+    for item in order_ingrdients:
+        if order_ingrdients[item] >= resources[item]:
+            print(f"Sorry there is not enough water.")
+            is_enough = False
+    return is_enough
 
-# Function to collect money from the customer
 def money_collector():
     """Collects money input from the customer and returns the total amount."""
     quarters_num = int(input("How many quartes do you have"))* 0.25 # quarter * 0.25 = quarter in dollar
     dimes_num = int(input("How many dimes do you have")) * 0.10
     nickles_num = int(input("How many nickels do you have")) * 0.05
-    pennies_num = int(input("How many pennies do you have")) * 0.001
+    pennies_num = int(input("How many pennies do you have")) * 0.01
     customer_wallet = quarters_num + dimes_num + nickles_num + pennies_num
     return customer_wallet
-final_wallet = money_collector()
-print(f"Your total of coins in $ is {round(final_wallet,2)}$")
 
-# Initialize variables for order details
-order_price = 0
-coffe = ""
-
-# Function to determine the order price based on the customer's choice
-def order_detail(order, order_choice):
-    """Determines the order details and returns the price."""
-    if customer_choice == "e":
-        order_choice = "espresso"
-        order  = MENU["espresso"]["cost"]
-        return order
-    elif customer_choice == "l":
-        order_choice = "latte"
-        order  = MENU["latte"]["cost"]
-        return order
-    elif customer_choice == "c":
-        order_choice = "cappuccino"
-        order  = MENU["cappuccino"]["cost"]
-        return order
-    else:
-        print("please enter a valid coffee type")
-final_price = order_detail(order = order_price, order_choice = coffe)
-
-# the total of the change 
-result = final_wallet - final_price
-
-# Calculate the change and inform the customer
-def money_checker(coffe_type):
+def money_checker():
     """Checks if the customer has sufficient funds and calculates the change."""
-    global final_wallet
-    global final_price
-    print(coffe)
-    if final_wallet > final_price:
-        print(f"Here is your coffe {coffe} and your change {round(final_wallet - final_price,2)}")
-        return result
+    cost = MENU[choice]["cost"]
+    
+    if payment >= cost:
+        change = payment - cost
+        print(f"Your total money is {payment} $, here is your coffee and your change {round(payment - cost, 2)} $")
+        return change
     else:
-        print(f"You dont have enough money please insert mor coins, you need {round(final_price - final_wallet, 2)}$ ")
-        return final_wallet
-money_checker(coffe)
+        print(f"You dont have enough money please insert mor coins, money refunded")
+        return payment
+
+# ask user about their order 
+machine_is_on = True
+
+profit = 0 
+
+while machine_is_on:
+    choice = input("What would you like? (espresso/latte/cappucino)").lower()
+    if choice == "off":
+        machine_is_on = False
+    elif choice == "report":
+        print(f"{resources["water"]}")
+        print(f"{resources["milk"]}")
+        print(f"{resources["coffee"]}")
+        print(f"money: $ {profit}")
+        machine_is_on = False
+    else:
+        drink = MENU[choice]
+        if is_ressource_sufficient(drink["ingredients"]):
+            payment = money_collector()
+            money = money_checker()
+            machine_is_on = False
