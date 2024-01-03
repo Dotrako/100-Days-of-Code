@@ -27,4 +27,3 @@ print(user_1.followers)
 print(user_1.following) # user 1 is following user2
 print(user_2.followers) # user 2 is followed by user 1
 print(user_2.following)
-
