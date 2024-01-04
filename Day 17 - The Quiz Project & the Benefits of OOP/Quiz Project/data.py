@@ -1,14 +1,12 @@
-question_data = [
-{"text": "A slug's blood is green.", "answer": "True"},
-{"text": "The loudest animal is the African Elephant.", "answer": "False"},
-{"text": "Approximately one quarter of human bones are in the feet.", "answer": "True"},
-{"text": "The total surface area of a human lungs is the size of a football pitch.", "answer": "True"},
-{"text": "In West Virginia, USA, if you accidentally hit an animal with your car, you are free to take it home to eat.", "answer": "True"},
-{"text": "In London, UK, if you happen to die in the House of Parliament, you are entitled to a state funeral.", "answer": "False"},
-{"text": "It is illegal to pee in the Ocean in Portugal.", "answer": "True"},
-{"text": "You can lead a cow down stairs but not up stairs.", "answer": "False"},
-{"text": "Google was originally called 'Backrub'.", "answer": "True"},
-{"text": "Buzz Aldrin's mother's maiden name was 'Moon'.", "answer": "True"},
-{"text": "No piece of square dry paper can be folded in half more than 7 times.", "answer": "False"},
-{"text": "A few ounces of chocolate can to kill a small dog.", "answer": "True"}
-]
+question_data = [{"type":"boolean","difficulty":"medium","category":"Entertainment: Video Games","question":"Resident Evil 4 was originally meant to be a Nintendo GameCube exclusive.","correct_answer":"True","incorrect_answers":["False"]},
+                 {"type":"boolean","difficulty":"medium","category":"Entertainment: Music","question":"The cover of The Beatles album &quot;Abbey Road&quot; featured a Volkswagen Beetle in the background.","correct_answer":"True","incorrect_answers":["False"]},
+                 {"type":"boolean","difficulty":"medium","category":"General Knowledge","question":"Coca-Cola&#039;s original colour was green.","correct_answer":"False","incorrect_answers":["True"]},
+                 {"type":"boolean","difficulty":"easy","category":"Sports","question":"There are a total of 20 races in Formula One 2016 season.","correct_answer":"False","incorrect_answers":["True"]},
+                 {"type":"boolean","difficulty":"medium","category":"Geography","question":"The Sonoran Desert is located in eastern Africa.","correct_answer":"False","incorrect_answers":["True"]},
+                 {"type":"boolean","difficulty":"medium","category":"Geography","question":"The capital of the US State Ohio is the city of Chillicothe.","correct_answer":"False","incorrect_answers":["True"]},
+                 {"type":"boolean","difficulty":"medium","category":"Animals","question":"&quot;Kamea,&quot; the Gilbertese Islander word for dog, is derived from the English phrase &quot;Come here!&quot;","correct_answer":"True","incorrect_answers":["False"]},
+                 {"type":"boolean","difficulty":"medium","category":"History","question":"The first televised presidential debate was between Jimmy Carter and Gerald Ford.","correct_answer":"False","incorrect_answers":["True"]},
+                 {"type":"boolean","difficulty":"easy","category":"Entertainment: Film","question":"Han Solo&#039;s co-pilot and best friend, &quot;Chewbacca&quot;, is an Ewok.","correct_answer":"False","incorrect_answers":["True"]},
+                 {"type":"boolean","difficulty":"easy","category":"Entertainment: Film","question":"&quot;Minions&quot; was released on the June 10th, 2015.","correct_answer":"False","incorrect_answers":["True"]}]
+
+# link https://opentdb.com/api.php?amount=10&type=boolean
