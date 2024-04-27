@@ -109,6 +109,60 @@ import random
 # display = Screen()
 # display.exitonclick()
 
+# import turtle as t
+# import random
+
+# tim = t.Turtle()
+# tim.shape("circle")
+# t.colormode(255)
+
+# def random_color():
+#     r = random.randint(0,255)
+#     g = random.randint(0,255)
+#     b = random.randint(0,255)
+#     random_color = (r, g, b)
+#     return random_color
+
+
+# directions = [0, 90 , 180, 270]
+# tim.pensize(15)
+# tim.speed("fastest")
+
+# for i in range(200):
+#     tim.color(random_color())
+#     tim.forward(30)
+#     tim.setheading(random.choice(directions))
+
+
+# display = t.Screen()
+# display.exitonclick()
+
+# import turtle as t
+# import random
+
+# tim = t.Turtle()
+# tim.shape("turtle")
+# t.colormode(255)
+
+# def random_color():
+#     r = random.randint(0,255)
+#     g = random.randint(0,255)
+#     b = random.randint(0,255)
+#     color = (r, g, b)
+#     return color
+
+
+# tim.circle(100)
+# tim.right(75)
+# tim.back(100)
+# tim.speed("fastest")
+
+
+
+
+# display = t.Screen()
+# display.exitonclick()
+
 import turtle as t
 import random
 
@@ -120,18 +174,17 @@ def random_color():
     r = random.randint(0,255)
     g = random.randint(0,255)
     b = random.randint(0,255)
-    random_color = (r, g, b)
-    return random_color
+    color = (r, g, b)
+    return color
 
 
-directions = [0, 90 , 180, 270]
-tim.pensize(15)
 tim.speed("fastest")
 
-for i in range(200):
+for _ in range(100):
     tim.color(random_color())
-    tim.forward(30)
-    tim.setheading(random.choice(directions))
+    tim.circle(100)
+    tim.setheading(tim.heading() + 10)
+
 
 
 display = t.Screen()
